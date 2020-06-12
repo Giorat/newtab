@@ -31,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "yarn global add netlify-cli && netlify login && netlify link"
+    "setup": "yarn global add netlify-cli && netlify login && netlify link"
   },
   "eslintConfig": {
     "extends": "react-app"
