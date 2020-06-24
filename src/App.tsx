@@ -24,9 +24,10 @@ function App() {
     return day + " " + today.getDate() + ' ' + month
   }
 
+  const currentBackground = "/img/beach.webp"
   return (
     <Fragment>
-      <div className="bg-gray-100 py-16 w-screen h-screen text-white" style={{ background: 'url(https://images.unsplash.com/photo-1545768076-c58b243b8f3e?ixlib=rb-1.2.1&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&ixid=eyJhcHBfaWQiOjcwOTV9)' }}>
+      <div className="bg-gray-100 py-16 w-screen h-screen text-white" style={{ background: 'url('+currentBackground+')' }}>
         <div className="bg-black opacity-50 fixed w-screen h-screen top-0 left-0 z-0"></div>
         <div className="fixed w-screen h-screen top-0 left-0 z-10 py-16">
           <div className="container px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
