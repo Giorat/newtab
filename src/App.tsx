@@ -18,7 +18,7 @@ function App() {
       setDay(theCurrentDay)
     }
     const hour : number = currentD.getHours()
-    const minutes : number = currentD.getMinutes()
+    // const minutes : number = currentD.getMinutes()
     if(hour >= 9 && hour < 13 && whatCurrentThing){
       setCurrentThing("working 9to5 - Morning")
     }
