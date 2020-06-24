@@ -1,8 +1,10 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 
 function App() {
+  const [whatCurrentThing, setCurrentThing] = useState("sleeping")
   const [currentDay, setDay] = useState(theCurrentDay)
   const [currentTime, setTime] = useState(theCurrentTime)
+
   setInterval(() => setTime(theCurrentTime), 1000);
 
   function capitalize(s: string): string {
@@ -10,9 +12,21 @@ function App() {
   }
 
   function theCurrentTime(): string {
-    const currentT = new Date().toLocaleTimeString()
+    const currentD = new Date();
+    const currentT : string = currentD.toLocaleTimeString()
     if (currentT === "00:00:01") {
       setDay(theCurrentDay)
+    }
+    const hour : number = currentD.getHours()
+    const minutes : number = currentD.getMinutes()
+    if(hour >= 9 && hour < 13 && whatCurrentThing){
+      setCurrentThing("working 9to5 - Morning")
+    }
+    if(hour >= 13 && hour < 14 && whatCurrentThing){
+      setCurrentThing("Lunch")
+    }
+    if(hour >= 14 && hour < 18 && whatCurrentThing){
+      setCurrentThing("working 9to5 - Afternoon")
     }
     return currentT
   }
@@ -21,39 +35,30 @@ function App() {
     const today: Date = new Date();
     const month = capitalize(today.toLocaleString('default', { month: 'long' }));
     const day = capitalize(today.toLocaleString('default', { weekday: 'long' }));
-    return day + " " + today.getDate() + ' ' + month
+    return day + " " + today.getDate() + ', ' + month
   }
 
-  const currentBackground = "/img/beach.webp"
+  const currentBackground = "/img/dark.webp"
   return (
-    <Fragment>
-      <div className="bg-gray-100 py-16 w-screen h-screen text-white" style={{ background: 'url('+currentBackground+')' }}>
-        <div className="bg-black opacity-50 fixed w-screen h-screen top-0 left-0 z-0"></div>
-        <div className="fixed w-screen h-screen top-0 left-0 z-10 py-16">
-          <div className="container px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              <div className="col-span-6">
-                <h1 className="text-6xl max-w-xl  leading-tight">
+    <div className="overflow-hidden w-screen h-screen">
+      <div className="w-screen h-screen text-white bg-cover" style={{ backgroundImage: 'url('+currentBackground+')' }}>
+          <div className="container mx-auto">
+            <div className="flex items-center h-screen">
+              <div className="text-center self-center mx-auto">
+                <h1 className="text-7xl leading-tight text-shadow">
                   {currentTime}
                 </h1>
-                <h1 className=" text-3xl max-w-xl leading-tight">
+                <h1 className=" text-4xl leading-tight text-shadow">
                   {currentDay}
                 </h1>
-                <p className=" text-base leading-relaxed mt-8 font-semibold">
-
+                <p className=" text-base leading-relaxed mt-8 font-semibold text-shadow">
+                  Now you should be {capitalize(whatCurrentThing)}.
                 </p>
-              </div>
-
-              <div className="col-span-6">
-                <h1 className=" text-3xl max-w-xl leading-tight">
-                  right column
-              </h1>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </Fragment>
+    </div>
   );
 }
 
