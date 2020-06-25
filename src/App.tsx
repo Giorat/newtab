@@ -23,7 +23,7 @@ function App() {
   const [currentDay, setDay] = useState(theCurrentDay)
   const [currentTime, setTime] = useState(theCurrentTime)
 
-  setInterval(() => setTime(theCurrentTime), 1000);
+  setInterval(() => setTime(theCurrentTime), 60* 1000);
 
   function capitalize(s: string): string {
     return s.charAt(0).toUpperCase() + s.slice(1)
@@ -38,15 +38,15 @@ function App() {
     const hour: number = currentD.getHours()
     // const minutes : number = currentD.getMinutes()
     if (hour >= 9 && hour < 13 && whatCurrentThing) {
-      setCurrentThing("working 9to5 - Morning")
+      setCurrentThing("🛠 working 9to5 - Morning")
     }
     if (hour >= 13 && hour < 14 && whatCurrentThing) {
-      setCurrentThing("Lunch")
+      setCurrentThing("having Lunch 🍝")
     }
     if (hour >= 14 && hour < 18 && whatCurrentThing) {
-      setCurrentThing("working 9to5 - Afternoon")
+      setCurrentThing("🛠 working 9to5 - Afternoon")
     }
-    return currentT
+    return currentT.slice(0, -3);
   }
 
   function theCurrentDay(): string {
@@ -85,13 +85,13 @@ function App() {
         <div className="container mx-auto">
           <div className="flex items-center h-screen">
             <div className="text-center self-center mx-auto">
-              <h1 className="text-7xl leading-tight text-shadow">
+              <h1 className="text-7xl leading-tight">
                 {currentTime}
               </h1>
-              <h1 className=" text-4xl leading-tight text-shadow">
+              <h1 className=" text-4xl leading-tight">
                 {currentDay}
               </h1>
-              <p className=" text-base leading-relaxed mt-8 font-semibold text-shadow">
+              <p className=" text-base leading-relaxed mt-8 font-semibold">
                 Now you should be {capitalize(whatCurrentThing)}.
                 </p>
               {searchForm}
