@@ -77,10 +77,11 @@ function App() {
       </button>
     </form>)
 
-  const currentBackground = "/img/dark.webp"
+  const currentBackground = require("./background.json").background
+ 
   return (
     <div className="overflow-hidden w-screen h-screen">
-      <div className="w-screen h-screen text-white bg-cover" style={{ backgroundImage: 'url(' + currentBackground + ')' }}>
+      <div className="w-screen h-screen text-white bg-cover" style={{ backgroundImage: 'url(data:image/png;base64,' + currentBackground + ')' }}>
         <div className="container mx-auto">
           <div className="flex items-center h-screen">
             <div className="text-center self-center mx-auto">
