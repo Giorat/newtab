@@ -36,7 +36,8 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "setup": "yarn global add netlify-cli && netlify login && netlify link"
+    "setup": "yarn global add netlify-cli && netlify login && netlify link",
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,5 +53,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
