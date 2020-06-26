@@ -43,7 +43,7 @@ function App() {
 
   function theCurrentTime(): string {
     const currentD = new Date();
-    const currentT: string = currentD.toLocaleTimeString();
+    const currentT: string = currentD.toLocaleTimeString('en-GB');
     if (currentT === '00:00:01') {
       setDay(theCurrentDay);
     }
