@@ -2,6 +2,7 @@ const { google } = require('googleapis');
 
 exports.handler = async (event) => {
   let params = event.queryStringParameters;
+  let referer = event.headers.referer;
   const code = params.code;
 
   let token;
@@ -40,14 +41,29 @@ exports.handler = async (event) => {
     }
   }
 
-  return {
-    statusCode: 302,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': 'true',
-      'Cache-Control': 'no-cache',
-      Location: `/?token=${token.tokens.access_token}`,
-    },
-    body: JSON.stringify({ event: token.tokens.access_token }),
-  };
+  if (referer) {
+    // Netlify Online
+    return {
+      statusCode: 302,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': 'true',
+        'Cache-Control': 'no-cache',
+        Location: `${referer}?token=${token.tokens.access_token}`,
+      },
+      body: JSON.stringify({ event: token.tokens.access_token }),
+    };
+  } else {
+    // Netlify Dev
+    return {
+      statusCode: 302,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': 'true',
+        'Cache-Control': 'no-cache',
+        Location: `/?token=${token.tokens.access_token}`,
+      },
+      body: JSON.stringify({ event: token.tokens.access_token }),
+    };
+  }
 };
