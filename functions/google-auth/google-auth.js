@@ -12,7 +12,7 @@ exports.handler = async () => {
       statusCode: 500,
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Credentials': 'true',
       },
       body: JSON.stringify({
         error: e.message,
@@ -25,7 +25,7 @@ exports.handler = async () => {
       statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Credentials': 'true',
       },
       body: JSON.stringify({
         message: "Page isn't working!",
@@ -37,7 +37,7 @@ exports.handler = async () => {
     statusCode: 200,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true,
+      'Access-Control-Allow-Credentials': 'true',
       'Cache-Control': 'no-cache',
       'Content-Type': 'text/html',
     },

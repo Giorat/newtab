@@ -13,7 +13,7 @@ exports.handler = async (event) => {
       statusCode: 500,
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Credentials': 'true',
       },
       body: JSON.stringify({
         message: 'Failed getting access token',
@@ -44,7 +44,7 @@ exports.handler = async (event) => {
     statusCode: 302,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true,
+      'Access-Control-Allow-Credentials': 'true',
       'Cache-Control': 'no-cache',
       Location: `/?token=${token.tokens.access_token}`,
     },
