@@ -1,0 +1,7 @@
+{
+  "name": "anewtab_functions",
+  "license": "MIT",
+  "dependencies": {
+    "googleapis": "^40.0.0"
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
+import CalendarEvents from './CalendarEvents';
 
 function App() {
   const [searchedText, SetSearchedText] = useState('');
@@ -48,7 +49,8 @@ function App() {
       setDay(theCurrentDay);
     }
     const hour: number = currentD.getHours();
-    // const minutes : number = currentD.getMinutes()
+    const minutes: number = currentD.getMinutes();
+
     if (hour >= 9 && hour < 13 && whatCurrentThing) {
       setCurrentThing('🛠 working 9to5 - Morning');
     }
@@ -133,6 +135,7 @@ function App() {
                 Now you should be {capitalize(whatCurrentThing)}.
               </p>
               {searchForm}
+              <CalendarEvents />
             </div>
           </div>
         </div>
