@@ -24,7 +24,7 @@ I need this new tab to be:
 - minimal no signups or any other stuff or pro thing ✅
 - not use battery if possible ✅
 - showcase current time ✅
-- showcase my next calendar event
+- showcase my next calendar events ✅
 - provide keyboard shortcuts ✅
 - provide links to the right tool at the right time based on my routine
   - in the morning - trello
