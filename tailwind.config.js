@@ -1,13 +1,13 @@
 module.exports = {
   purge: {
-    enabled: true,
-    content: ["./public/**/*.html", "./src/**/*.tsx", "./src/**/*.jsx"],
+    enabled: process.env.TAILWIND_PURGE,
+    content: ['./public/**/*.html', './src/**/*.tsx', './src/**/*.jsx'],
   },
   theme: {
     extend: {
-      fontSize:{
+      fontSize: {
         '7xl': '5rem',
-        '8xl': '6rem'
+        '8xl': '6rem',
       },
     },
   },

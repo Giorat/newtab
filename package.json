@@ -13,11 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "@types/bent": "^7.0.2",
-    "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
@@ -31,12 +27,11 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "prestart": "tailwind build ./src/tailwind.css -c ./tailwind.config.js -o ./src/tailwind.generated.css",
+    "predev": "tailwind build ./src/tailwind.css -c ./tailwind.config.js -o ./src/tailwind.generated.css",
     "prebuild": "tailwind build ./src/tailwind.css -c ./tailwind.config.js -o ./src/tailwind.generated.css",
     "dev": "netlify dev",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "setup": "yarn global add netlify-cli && netlify login && netlify link",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",

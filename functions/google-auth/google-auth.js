@@ -8,7 +8,6 @@ exports.handler = async () => {
   try {
     redirectURL = await authorize();
   } catch (e) {
-    console.log('error', e);
     return {
       statusCode: 500,
       headers: {
@@ -53,7 +52,6 @@ exports.handler = async () => {
    */
   function authorize() {
     const { CLIENT_SECRET, CLIENT_ID, REDIRECT_URIS } = process.env;
-    console.log(REDIRECT_URIS);
     oAuth2Client = new google.auth.OAuth2(
       `${CLIENT_ID}`,
       `${CLIENT_SECRET}`,

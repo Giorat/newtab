@@ -7,7 +7,6 @@ exports.handler = async (event) => {
   let token;
 
   try {
-    console.log('Try get accesToken for', code);
     token = await getAccessToken(code);
   } catch (err) {
     return {
