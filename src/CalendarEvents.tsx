@@ -47,11 +47,10 @@ function CalendarEvents() {
         );
         if (allDay) {
           SetEvents(allDay.items);
-          SetLoading(false);
         }
       } catch (e) {
         window.localStorage.removeItem(AUTH_CALENDAR_KEY);
-        window.location.reload();
+        window.location.reload(true);
       }
     };
     if (token !== '') {
@@ -75,6 +74,7 @@ function CalendarEvents() {
           SetLoginUrl(res.redirectURL);
         }
       }
+      SetLoading(false);
     };
     fetchData();
   }, []);
@@ -102,7 +102,14 @@ function CalendarEvents() {
     return <Fragment></Fragment>;
   } else {
     if (token === '') {
-      return <button onClick={Login}> Login to see events</button>;
+      return (
+        <button
+          className="opacity-25 m-2 border-2 p-2 rounded text-gray-300"
+          onClick={Login}
+        >
+          Login to see events
+        </button>
+      );
     } else {
       return (
         <Fragment>
