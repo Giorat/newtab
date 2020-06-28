@@ -31,11 +31,12 @@
     "prebuild": "tailwind build ./src/tailwind.css -c ./tailwind.config.js -o ./src/tailwind.generated.css",
     "dev": "netlify dev",
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build-sw": "workbox generateSW workbox-config.js",
+    "build": "react-app-rewired build && yarn run build-sw",
     "eject": "react-scripts eject",
     "setup": "yarn global add netlify-cli && netlify login && netlify link",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-    "postinstall": "cd functions && yarn install"
+    "postinstall": "yarn global add workbox-cli && cd functions && yarn install"
   },
   "eslintConfig": {
     "extends": "react-app"
