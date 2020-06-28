@@ -18,6 +18,8 @@ exports.handler = async (event) => {
       },
       body: JSON.stringify({
         message: 'Failed getting access token',
+        code: code,
+        location: `${referer}?token=${token.tokens.access_token}`,
         error: err,
       }),
     };
@@ -41,29 +43,14 @@ exports.handler = async (event) => {
     }
   }
 
-  if (referer) {
-    // Netlify Online
-    return {
-      statusCode: 302,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': 'true',
-        'Cache-Control': 'no-cache',
-        Location: `${referer}?token=${token.tokens.access_token}`,
-      },
-      body: JSON.stringify({ event: token.tokens.access_token }),
-    };
-  } else {
-    // Netlify Dev
-    return {
-      statusCode: 302,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': 'true',
-        'Cache-Control': 'no-cache',
-        Location: `/?token=${token.tokens.access_token}`,
-      },
-      body: JSON.stringify({ event: token.tokens.access_token }),
-    };
-  }
+  return {
+    statusCode: 302,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': 'true',
+      'Cache-Control': 'no-cache',
+      Location: `/?token=${token.tokens.access_token}`,
+    },
+    body: JSON.stringify({ event: token.tokens.access_token }),
+  };
 };
