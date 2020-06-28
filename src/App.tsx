@@ -8,6 +8,7 @@ function App() {
   const [whatCurrentThing, setCurrentThing] = useState('sleeping');
   const [currentDay, setDay] = useState(theCurrentDay);
   const [currentTime, setTime] = useState(theCurrentTime);
+  const [currentWeek, setWeek] = useState(theCurrentWeek);
 
   useHotkeys('space', () => {
     SetShowSearch(true);
@@ -47,6 +48,7 @@ function App() {
     const currentT: string = currentD.toLocaleTimeString('en-GB');
     if (currentT === '00:00:01') {
       setDay(theCurrentDay);
+      setWeek(theCurrentWeek);
     }
     const hour: number = currentD.getHours();
     // const minutes: number = currentD.getMinutes();
@@ -72,6 +74,18 @@ function App() {
       today.toLocaleString('default', { weekday: 'long' })
     );
     return day + ' ' + today.getDate() + ', ' + month;
+  }
+
+  function theCurrentWeek(): string {
+    // https://stackoverflow.com/a/6117889/9295292
+    const today: Date = new Date();
+    let d = new Date(
+      Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
+    );
+    var dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return 'Week ' + Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
   }
 
   function submitSearchGoogle(event: React.FormEvent) {
@@ -112,6 +126,7 @@ function App() {
         <div className="container mx-auto">
           <div className="flex items-center h-screen">
             <div className="text-center self-center mx-auto">
+              <p className="text-1xl opacity-50 leading-tight">{currentWeek}</p>
               <h1 className="text-7xl leading-tight">{currentTime}</h1>
               <h1 className=" text-4xl leading-tight">{currentDay}</h1>
               {/*<p className=" text-base leading-relaxed mt-8 font-semibold">
