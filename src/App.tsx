@@ -85,7 +85,10 @@ function App() {
     var dayNum = d.getUTCDay() || 7;
     d.setUTCDate(d.getUTCDate() + 4 - dayNum);
     const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-    return 'Week ' + Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+    return (
+      'Week ' +
+      Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7)
+    );
   }
 
   function submitSearchGoogle(event: React.FormEvent) {
