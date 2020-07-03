@@ -120,10 +120,10 @@ function App() {
   return (
     <div className="overflow-hidden w-screen h-screen">
       <div
-        className="w-screen h-screen text-white bg-cover"
+        className="w-screen h-screen text-white bg-cover bg-black"
         style={{
           backgroundImage:
-            'url(data:image/png;base64,' + currentBackground + ')',
+            'url(data:image/png;bafse64,' + currentBackground + ')',
         }}
       >
         <div className="container mx-auto">
