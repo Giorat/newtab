@@ -29,6 +29,9 @@ function App() {
   useHotkeys('m', () =>
     window.location.replace('https://mail.google.com/mail/')
   );
+  useHotkeys('w', () =>
+    window.location.replace('https://www.youtube.com/watch?v=7cVfVYuAK3I&list=PLKkHXmYMW_815TUbVc9bAvobzYUNb8gD8')
+  );
 
   const handleEsc = (event: KeyboardEvent) => {
     if (event.keyCode === 27) {
