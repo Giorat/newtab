@@ -103,12 +103,14 @@ function CalendarEvents() {
   } else {
     if (token === '') {
       return (
-        <button
-          className="opacity-25 m-2 border-2 p-2 rounded text-gray-300"
-          onClick={Login}
-        >
-          Login to see events
-        </button>
+        <div class="flex justify-center opacity-50">
+          <button
+            className="absolute opacity-25 m-2 border-2 p-2 rounded text-gray-300 bottom-0"
+            onClick={Login}
+          >
+            Login to see events
+          </button>
+        </div>
       );
     } else {
       return (

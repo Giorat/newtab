@@ -30,7 +30,9 @@ function App() {
     window.location.replace('https://mail.google.com/mail/')
   );
   useHotkeys('w', () =>
-    window.location.replace('https://www.youtube.com/watch?v=7cVfVYuAK3I&list=PLKkHXmYMW_815TUbVc9bAvobzYUNb8gD8')
+    window.location.replace(
+      'https://www.youtube.com/watch?v=7cVfVYuAK3I&list=PLKkHXmYMW_815TUbVc9bAvobzYUNb8gD8'
+    )
   );
 
   const handleEsc = (event: KeyboardEvent) => {
@@ -94,16 +96,16 @@ function App() {
     );
   }
 
-  function submitSearchGoogle(event: React.FormEvent) {
-    window.location.replace('https://www.google.com/search?q=' + searchedText);
+  function submitSearch(event: React.FormEvent) {
+    window.location.replace('https://duckduckgo.com/?q=' + searchedText);
     event.preventDefault();
   }
 
-  let searchForm;
+  let searchForm: JSX;
   if (showSearch)
     searchForm = (
       <form
-        onSubmit={submitSearchGoogle}
+        onSubmit={submitSearch}
         className="pt-2 relative mx-auto text-gray-600"
       >
         <input
@@ -112,7 +114,9 @@ function App() {
           type="text"
           name="search"
           placeholder="Search"
-          onChange={(e) => SetSearchedText(e.target.value)}
+          onChange={(e: { target: { value: any } }) =>
+            SetSearchedText(e.target.value)
+          }
           value={searchedText}
         />
       </form>
