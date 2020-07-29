@@ -32,11 +32,11 @@
     "dev": "netlify dev",
     "start": "react-app-rewired start",
     "build-sw": "workbox generateSW workbox-config.js",
-    "build": "react-app-rewired build && yarn run build-sw",
+    "build": "react-app-rewired build",
     "eject": "react-scripts eject",
     "setup": "yarn global add netlify-cli && netlify login && netlify link",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-    "postinstall": "yarn global add workbox-cli && cd functions && yarn install"
+    "postinstall": "cd functions && yarn install"
   },
   "eslintConfig": {
     "extends": "react-app"
