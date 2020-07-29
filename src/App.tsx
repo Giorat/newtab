@@ -101,7 +101,7 @@ function App() {
     event.preventDefault();
   }
 
-  let searchForm: JSX;
+  let searchForm;
   if (showSearch)
     searchForm = (
       <form
