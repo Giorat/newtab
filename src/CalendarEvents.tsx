@@ -79,7 +79,7 @@ function CalendarEvents() {
     fetchData();
   }, []);
 
-  const eventsOnUI = events.map((event: any, index) => {
+  const eventsOnUI = events.map((event: any, index: Number) => {
     const start = new Date(event.start.dateTime).toLocaleTimeString('en-GB');
     const startTime = start.slice(0, -3);
 
@@ -98,11 +98,13 @@ function CalendarEvents() {
     );
   });
 
+  let calendarEventUi;
+
   if (loading) {
-    return <Fragment></Fragment>;
+    calendarEventUi = <Fragment></Fragment>;
   } else {
     if (token === '') {
-      return (
+      calendarEventUi = (
         <div class="flex justify-center opacity-50">
           <button
             className="absolute opacity-25 m-2 border-2 p-2 rounded text-gray-300 bottom-0"
@@ -113,13 +115,14 @@ function CalendarEvents() {
         </div>
       );
     } else {
-      return (
+      calendarEventUi = (
         <Fragment>
           <br />
           <div className="events">{eventsOnUI}</div>
         </Fragment>
       );
     }
+    return calendarEventUi;
   }
 }
 
