@@ -124,6 +124,8 @@ function App() {
 
   const currentBackground = require('./background.json').background;
 
+  const calendarEventsComp: any = <CalendarEvents />;
+
   return (
     <div className="overflow-hidden w-screen h-screen">
       <div
@@ -143,7 +145,7 @@ function App() {
                 Now you should be {capitalize(whatCurrentThing)}.
               </p>*/}
               {searchForm}
-              <CalendarEvents />
+              {calendarEventsComp}
             </div>
           </div>
         </div>

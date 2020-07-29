@@ -10,7 +10,7 @@ function geturlparams(name: string): string {
 
 const AUTH_CALENDAR_KEY = 'calendar_auth';
 
-function CalendarEvents() {
+function CalendarEvents(): JSX.Element {
   const [loading, SetLoading] = useState(true);
   const [token, SetToken] = useState('');
   const [urlLogin, SetLoginUrl] = useState('');
@@ -98,14 +98,12 @@ function CalendarEvents() {
     );
   });
 
-  let calendarEventUi;
+  let calendarEventUi = <Fragment></Fragment>;
 
-  if (loading) {
-    calendarEventUi = <Fragment></Fragment>;
-  } else {
+  if (!loading) {
     if (token === '') {
       calendarEventUi = (
-        <div class="flex justify-center opacity-50">
+        <div className="flex justify-center opacity-50">
           <button
             className="absolute opacity-25 m-2 border-2 p-2 rounded text-gray-300 bottom-0"
             onClick={Login}
@@ -122,8 +120,8 @@ function CalendarEvents() {
         </Fragment>
       );
     }
-    return calendarEventUi;
   }
+  return calendarEventUi;
 }
 
 export default CalendarEvents;
