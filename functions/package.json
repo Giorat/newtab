@@ -2,6 +2,6 @@
   "name": "anewtab_functions",
   "license": "MIT",
   "dependencies": {
-    "googleapis": "^40.0.0"
+    "googleapis": "^60.0.0"
   }
 }

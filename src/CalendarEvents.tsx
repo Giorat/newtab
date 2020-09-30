@@ -80,25 +80,23 @@ function CalendarEvents(): JSX.Element {
   }, []);
 
   const eventsOnUI = events.map((event: any, index: Number) => {
-    const start = new Date(event.start.dateTime).toLocaleTimeString('en-GB');
-    const startTime = start.slice(0, -3);
-
-    const end = new Date(event.end.dateTime).toLocaleTimeString('en-GB');
-    const endTime = end.slice(0, -3);
-
-    let opacity = 'opacity-50';
-    if (index === 0) {
-      opacity = 'my-2 opacity-100';
+    let eventText: string = event.summary;
+    if (event.start.dateTime) {
+      const start: string = new Date(event.start.dateTime).toLocaleTimeString(
+        'en-GB'
+      );
+      const startTime: string = start.slice(0, -3);
+      const end: string = new Date(event.end.dateTime).toLocaleTimeString(
+        'en-GB'
+      );
+      const endTime: string = end.slice(0, -3);
+      eventText += ' - ' + startTime + ' - ' + endTime;
     }
 
-    return (
-      <div className={opacity}>
-        [ {event.summary} - {startTime} - {endTime} ]
-      </div>
-    );
+    return <div className="my-2 firstLetterCapitalize">[ {eventText} ]</div>;
   });
 
-  let calendarEventUi = <Fragment></Fragment>;
+  let calendarEventUi: JSX.Element = <Fragment></Fragment>;
 
   if (!loading) {
     if (token === '') {
